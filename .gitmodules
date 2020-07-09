@@ -1,6 +1,3 @@
 [submodule "emacs/.emacs.d"]
 	path = emacs/.emacs.d
 	url = https://github.com/syl20bnr/spacemacs.git
-[submodule "tmux/.tmux"]
-	path = tmux/.tmux
-	url = https://github.com/ohmyzsh/ohmyzsh.git
