@@ -43,13 +43,13 @@ alias vi="$EDITOR"
 alias vim="$VISUAL"
 alias emacs="$EMACS"
 
-if [ -f "/usr/bin/yay"]; then
+if [ -f "/usr/bin/yay" ]; then
     alias pacman="yay"
 fi
-if [ -f "/usr/bin/exa"]; then
+if [ -f "/usr/bin/exa" ]; then
    alias ls='exa'
 fi
-if [ -f "/usr/bin/bat"]; then
+if [ -f "/usr/bin/bat" ]; then
     alias cat='bat'
 fi
 
