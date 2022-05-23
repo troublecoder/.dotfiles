@@ -1,4 +1,6 @@
-eval $(/opt/homebrew/bin/brew shellenv)
+if hash brew 2>/dev/null;then
+  eval $(/opt/homebrew/bin/brew shellenv)
+fi
 
 zstyle ':zim:zmodule' use 'degit'
 
@@ -45,3 +47,6 @@ register_alias_if_exists yay pacman
 #### etc
 eval "$(pyenv init -)"
 export PATH="$HOME/.poetry/bin:$PATH"
+if [[ `uname` == *"Linux"* ]]; then
+  export "DISPLAY=localhost:10.0"
+fi
