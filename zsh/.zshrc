@@ -1,5 +1,6 @@
-if hash brew 2>/dev/null;then
-  eval $(/opt/homebrew/bin/brew shellenv)
+HOMEBREW_PATH=/opt/homebrew/bin/brew
+if [[ -e $HOMEBREW_PATH ]];then
+  eval $($HOMEBREW_PATH shellenv)
 fi
 
 zstyle ':zim:zmodule' use 'degit'
