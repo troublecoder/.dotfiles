@@ -1,5 +1,5 @@
 HOMEBREW_PATH=/opt/homebrew/bin/brew
-if [[ -e $HOMEBREW_PATH ]];then
+if [[ -e $HOMEBREW_PATH ]]; then
   eval $($HOMEBREW_PATH shellenv)
 fi
 
