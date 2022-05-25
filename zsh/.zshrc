@@ -1,4 +1,6 @@
-eval $(/opt/homebrew/bin/brew shellenv)
+if hash brew 2>/dev/null;then
+  eval $(/opt/homebrew/bin/brew shellenv)
+fi
 
 zstyle ':zim:zmodule' use 'degit'
 
@@ -46,6 +48,10 @@ register_alias_if_exists yay pacman
 #### etc
 export PATH="$HOME/.poetry/bin:$PATH"
 export TERM="xterm-256color"
+
+if [[ `uname` == *"Linux"* ]]; then
+  export "DISPLAY=localhost:10.0"
+fi
 
 export CONDA_HOME="$HOME/miniforge3"
 
