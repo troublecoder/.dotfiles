@@ -1,3 +1,0 @@
-always_yes: True
-envs_dirs:
-  - ~/miniforge3/envs

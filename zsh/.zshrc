@@ -36,14 +36,8 @@ source ${ZIM_HOME}/init.zsh
 #### alias
 register_alias_if_exists nvim vim
 register_alias_if_exists nvim vi
-register_alias_if_exists bat cat
-register_alias_if_exists exa ls
-register_alias_if_exists dust du
-register_alias_if_exists duf df
-register_alias_if_exists ng grep
-register_alias_if_exists procs ps
+register_alias_if_exists eza ls
 register_alias_if_exists htop top
-register_alias_if_exists yay pacman
 
 
 #### etc
@@ -54,16 +48,4 @@ if [[ `uname` == *"Linux"* ]]; then
   export "DISPLAY=localhost:10.0"
 fi
 
-export CONDA_HOME="$HOME/miniforge3"
-
-__conda_setup="$($CONDA_HOME/bin/conda 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "$CONDA_HOME/etc/profile.d/conda.sh" ]; then
-        . "$CONDA_HOME/etc/profile.d/conda.sh"
-    else
-        export PATH="$CONDA_HOME/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
