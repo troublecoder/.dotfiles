@@ -1,0 +1,10 @@
+
+[wsl2]
+localhostForwarding=true
+nestedVirtualization=true
+processors=8
+memory=25769803776
+
+[experimental]
+autoMemoryReclaim=gradual
+networkingMode=mirrored
