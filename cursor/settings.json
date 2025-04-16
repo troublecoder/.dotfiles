@@ -1,0 +1,35 @@
+{
+  "cursor.cpp.disabledLanguages": ["plaintext", "markdown", "scminput"],
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "'CaskaydiaCove Nerd Font', Consolas, 'Courier New', monospace",
+  "editor.fontSize": 15,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+
+  "git.autofetch": true,
+
+  "indentRainbow.ignoreErrorLanguages": [
+    "css",
+    "markdown",
+    "javascript",
+    "tailwindcss",
+    "typescript",
+    "json",
+    "jsonc",
+    "vue"
+  ],
+
+  "vite.autoStart": false,
+  "vsicons.dontShowNewVersionMessage": true,
+
+  "workbench.activityBar.orientation": "vertical",
+  "workbench.iconTheme": "vscode-icons",
+
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
+}
