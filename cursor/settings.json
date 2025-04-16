@@ -8,6 +8,7 @@
   "editor.formatOnSave": true,
 
   "git.autofetch": true,
+  "git.enableSmartCommit": true,
 
   "indentRainbow.ignoreErrorLanguages": [
     "css",
