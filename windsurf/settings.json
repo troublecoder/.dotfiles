@@ -1,0 +1,172 @@
+{
+  "editor.fontFamily": "'CaskaydiaCove Nerd Font', 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.inlayHints.enabled": "on",
+  "editor.inlayHints.fontSize": 12,
+  "editor.inlayHints.padding": true,
+  "editor.linkedEditing": true,
+  "editor.lineNumbers": "relative",
+  "editor.mouseWheelZoom": true,
+  "editor.renderWhitespace": "all",
+  "editor.smoothScrolling": true,
+  "editor.rulers": [80, 120],
+  "editor.tokenColorCustomizations": {
+    "[*Light*]": {
+      "textMateRules": [
+        {
+          "scope": "ref.matchtext",
+          "settings": {
+            "foreground": "#000"
+          }
+        }
+      ]
+    },
+    "[*Dark*]": {
+      "textMateRules": [
+        {
+          "scope": "ref.matchtext",
+          "settings": {
+            "foreground": "#fff"
+          }
+        }
+      ]
+    },
+    "textMateRules": [
+      {
+        "scope": "keyword.other.dotenv",
+        "settings": {
+          "foreground": "#FF000000"
+        }
+      }
+    ]
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "pubspec.yaml": ".packages, .metadata, pubspec.lock, analysis_options.yaml",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml",
+    "Cargo.toml": "Cargo.lock"
+  },
+  "debug.console.fontSize": 15,
+  "diffEditor.codeLens": true,
+  "files.associations": {
+    "*.page-template": "vue",
+    "*.layout-template": "vue",
+    "*.vue": "vue",
+    ".env*": "dotenv",
+    "wrangler.json": "jsonc"
+  },
+  "files.autoSave": "onFocusChange",
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "always",
+  "github.copilot.chat.codesearch.enabled": true,
+  "github.copilot.chat.agent.thinkingTool": true,
+  "github.copilot.chat.editor.temporalContext.enabled": true,
+  "github.copilot.chat.languageContext.fix.typescript.enabled": true,
+  "github.copilot.chat.completionContext.typescript.mode": "on",
+  "github.copilot.chat.languageContext.inline.typescript.enabled": true,
+  "github.copilot.chat.languageContext.typescript.enabled": true,
+  "indentRainbow.ignoreErrorLanguages": ["json", "jsonc", "markdown"],
+  "notebook.formatOnCellExecution": true,
+  "notebook.formatOnSave.enabled": true,
+  "python.analysis.autoFormatStrings": true,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.diagnosticMode": "workspace",
+  "python.analysis.inlayHints.callArgumentNames": "all",
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "python.analysis.inlayHints.pytestParameters": true,
+  "python.analysis.inlayHints.variableTypes": true,
+  "python.analysis.packageIndexDepths": [
+    {
+      "name": "sklearn",
+      "depth": 2
+    },
+    {
+      "name": "matplotlib",
+      "depth": 2
+    },
+    {
+      "name": "scipy",
+      "depth": 2
+    },
+    {
+      "name": "django",
+      "depth": 2
+    },
+    {
+      "name": "flask",
+      "depth": 2
+    },
+    {
+      "name": "fastapi",
+      "depth": 2
+    }
+  ],
+  "python.REPL.sendToNativeREPL": true,
+  "python.testing.pytestEnabled": true,
+  "vue.inlayHints.destructuredProps": true,
+  "vue.inlayHints.inlineHandlerLeading": true,
+  "vue.inlayHints.missingProps": true,
+  "vue.inlayHints.optionsWrapper": true,
+  "vue.inlayHints.vBindShorthand": true,
+  "redhat.telemetry.enabled": false,
+  "roo-cline.allowedCommands": [
+    "npm test",
+    "npm install",
+    "tsc",
+    "git log",
+    "git diff",
+    "git show"
+  ],
+  "ruff.path": ["${workspaceFolder}/.venv/bin/ruff"],
+  "security.workspace.trust.untrustedFiles": "open",
+  "sonarlint.disableTelemetry": true,
+  "sourcery.codeLens": true,
+  "sourcery.token": "user_kXDsGNp_lTYWme0K0G3oYni0Txlnz7yHqcAY38bpBRDFIUW_LOhWorHV0yE",
+  "terminal.external.windowsExec": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.fontSize": 15,
+  "workbench.editor.enablePreview": false,
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.list.smoothScrolling": true,
+  "vim.useCtrlKeys": false,
+  "vim.useSystemClipboard": true,
+  "vite.autoStart": false,
+  "vsicons.dontShowNewVersionMessage": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "always",
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
