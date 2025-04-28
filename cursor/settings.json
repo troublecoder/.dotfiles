@@ -8,11 +8,15 @@
     "editor.inlayHints.fontSize": 12,
     "editor.inlayHints.padding": true,
     "editor.lineNumbers": "relative",
+    "editor.minimap.enabled": true,
     "editor.renderWhitespace": "all",
     "editor.rulers": [
         80,
         120
     ],
+    "files.associations": {
+        "TODO.md": "todo"
+    },
     "files.autoSave": "onFocusChange",
     "git.autofetch": true,
     "git.confirmSync": false,
@@ -55,8 +59,8 @@
     "vue.inlayHints.missingProps": true,
     "vue.inlayHints.optionsWrapper": true,
     "vue.inlayHints.vBindShorthand": true,
+    "window.newWindowProfile": "기본",
     "workbench.activityBar.orientation": "vertical",
-    "workbench.colorTheme": "Default Dark Modern",
     "workbench.editor.enablePreview": false,
     "workbench.iconTheme": "vscode-icons",
     "[javascript]": {
@@ -80,5 +84,4 @@
     "[vue-html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "window.newWindowProfile": "기본",
 }
