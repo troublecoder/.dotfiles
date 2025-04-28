@@ -80,4 +80,5 @@
     "[vue-html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "window.newWindowProfile": "기본",
 }
