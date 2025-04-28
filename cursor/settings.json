@@ -42,6 +42,7 @@
   "remote.SSH.remotePlatform": {
     "nvm-25-0002": "linux"
   },
+  "sourcery.codeLens": false,
   "terminal.external.windowsExec": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
   "typescript.inlayHints.enumMemberValues.enabled": true,
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
