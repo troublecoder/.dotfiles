@@ -56,7 +56,6 @@
   "vue.inlayHints.missingProps": true,
   "vue.inlayHints.optionsWrapper": true,
   "vue.inlayHints.vBindShorthand": true,
-  "window.newWindowProfile": "기본",
   "workbench.activityBar.orientation": "vertical",
   "workbench.editor.enablePreview": false,
   "workbench.iconTheme": "vscode-icons",
