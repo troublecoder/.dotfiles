@@ -1,87 +1,87 @@
 {
-    "editor.fontSize": 15,
-    "editor.fontFamily": "'CaskaydiaCove Nerd Font', 'Courier New', monospace",
-    "editor.fontLigatures": true,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.guides.bracketPairs": "active",
-    "editor.inlayHints.fontSize": 12,
-    "editor.inlayHints.padding": true,
-    "editor.lineNumbers": "relative",
-    "editor.minimap.enabled": true,
-    "editor.renderWhitespace": "all",
-    "editor.rulers": [
-        80,
-        120
-    ],
-    "files.associations": {
-        "TODO.md": "todo"
-    },
-    "files.autoSave": "onFocusChange",
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "git.enableSmartCommit": true,
-    "git.openRepositoryInParentFolders": "always",
-    "indentRainbow.ignoreErrorLanguages": [
-        "css",
-        "markdown",
-        "javascript",
-        "tailwindcss",
-        "typescript",
-        "json",
-        "jsonc",
-        "vue",
-        "less",
-        "scss"
-    ],
-    "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
-    "javascript.inlayHints.parameterNames.enabled": "all",
-    "javascript.inlayHints.parameterTypes.enabled": true,
-    "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
-    "javascript.inlayHints.variableTypes.enabled": true,
-    "javascript.inlayHints.variableTypes.suppressWhenTypeMatchesName": false,
-    "python.REPL.sendToNativeREPL": true,
-    "python.venvPath": ".venv",
-    "remote.SSH.remotePlatform": {
-        "nvm-25-0002": "linux"
-    },
-    "terminal.external.windowsExec": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
-    "typescript.inlayHints.enumMemberValues.enabled": true,
-    "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
-    "typescript.inlayHints.parameterNames.enabled": "all",
-    "typescript.inlayHints.parameterTypes.enabled": true,
-    "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
-    "typescript.inlayHints.variableTypes.enabled": true,
-    "vim.useCtrlKeys": false,
-    "vsicons.dontShowNewVersionMessage": true,
-    "vue.inlayHints.destructuredProps": true,
-    "vue.inlayHints.inlineHandlerLeading": true,
-    "vue.inlayHints.missingProps": true,
-    "vue.inlayHints.optionsWrapper": true,
-    "vue.inlayHints.vBindShorthand": true,
-    "window.newWindowProfile": "기본",
-    "workbench.activityBar.orientation": "vertical",
-    "workbench.editor.enablePreview": false,
-    "workbench.iconTheme": "vscode-icons",
-    "[javascript]": {
-        "editor.defaultFormatter": "biomejs.biome"
-    },
-    "[javascriptreact]": {
-        "editor.defaultFormatter": "biomejs.biome"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "biomejs.biome"
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "biomejs.biome"
-    },
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "biomejs.biome"
-    },
-    "[vue]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[vue-html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
+  "editor.fontSize": 15,
+  "editor.fontFamily": "'CaskaydiaCove Nerd Font', 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.inlayHints.fontSize": 12,
+  "editor.inlayHints.padding": true,
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": true,
+  "editor.renderWhitespace": "all",
+  "editor.rulers": [80, 120],
+  "files.associations": {
+    "TODO.md": "todo"
+  },
+  "files.autoSave": "onFocusChange",
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "always",
+  "indentRainbow.ignoreErrorLanguages": [
+    "css",
+    "markdown",
+    "javascript",
+    "tailwindcss",
+    "typescript",
+    "json",
+    "jsonc",
+    "vue",
+    "less",
+    "scss"
+  ],
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "javascript.inlayHints.parameterTypes.enabled": true,
+  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "javascript.inlayHints.variableTypes.enabled": true,
+  "javascript.inlayHints.variableTypes.suppressWhenTypeMatchesName": false,
+  "python.REPL.sendToNativeREPL": true,
+  "python.venvPath": ".venv",
+  "remote.SSH.remotePlatform": {
+    "nvm-25-0002": "linux"
+  },
+  "terminal.external.windowsExec": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "vim.useCtrlKeys": false,
+  "vsicons.dontShowNewVersionMessage": true,
+  "vue.inlayHints.destructuredProps": true,
+  "vue.inlayHints.inlineHandlerLeading": true,
+  "vue.inlayHints.missingProps": true,
+  "vue.inlayHints.optionsWrapper": true,
+  "vue.inlayHints.vBindShorthand": true,
+  "window.newWindowProfile": "기본",
+  "workbench.activityBar.orientation": "vertical",
+  "workbench.editor.enablePreview": false,
+  "workbench.iconTheme": "vscode-icons",
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue-html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
