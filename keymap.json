@@ -1,0 +1,104 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-2": ["workspace::ActivatePane", 1],
+      "ctrl-6": ["workspace::ActivatePane", 5],
+      "ctrl-r": "projects::OpenRecent",
+      "ctrl-\\": "pane::SplitRight",
+      "ctrl-shift-y": "debug_panel::ToggleFocus",
+      "ctrl-shift-e": "project_panel::ToggleFocus",
+      "f5": "debugger::Start",
+      "shift-f5": "debugger::Stop",
+      "ctrl-shift-f5": "debugger::Restart",
+      "f9": "editor::ToggleBreakpoint",
+      "f10": "debugger::StepOver",
+      "f11": "debugger::StepInto",
+      "shift-f11": "debugger::StepOut",
+    },
+  },
+  {
+    "context": "Workspace && debugger_running",
+    "bindings": {
+      "f5": null,
+    },
+  },
+  {
+    "context": "Workspace && debugger_stopped",
+    "bindings": {
+      "f5": "debugger::Continue",
+    },
+  },
+  {
+    "context": "Editor && !menu",
+    "bindings": {
+      "shift-tab": "editor::Backtab",
+      "ctrl-a": "editor::SelectAll",
+      "ctrl-b": "workspace::ToggleLeftDock",
+      "ctrl-c": "editor::Copy",
+      "ctrl-d": "editor::SelectNext",
+      "ctrl-e": "file_finder::Toggle",
+      "ctrl-f": "buffer_search::Deploy",
+      "ctrl-g": "go_to_line::Toggle",
+      "ctrl-h": "buffer_search::DeployReplace",
+      "ctrl-i": "editor::ShowSignatureHelp",
+      "ctrl-j": "workspace::ToggleBottomDock",
+      "ctrl-l": "editor::SelectLine",
+      "ctrl-n": "workspace::NewFile",
+      "ctrl-o": "workspace::OpenFiles",
+      "ctrl-p": "file_finder::Toggle",
+      "ctrl-r": "projects::OpenRecent",
+      "ctrl-s": "workspace::Save",
+      "ctrl-t": "project_symbols::Toggle",
+      "ctrl-u": "editor::UndoSelection",
+      "ctrl-v": "editor::Paste",
+      "ctrl-w": "pane::CloseActiveItem",
+      "ctrl-x": "editor::Cut",
+      "ctrl-y": "editor::Redo",
+      "ctrl-z": "editor::Undo",
+      "ctrl-[": "editor::Outdent",
+      "ctrl-\\": "pane::SplitRight",
+      "ctrl-]": "editor::Indent",
+      "ctrl-`": "terminal_panel::Toggle",
+      "ctrl-pageup": "pane::ActivatePreviousItem",
+      "ctrl-pagedown": "pane::ActivateNextItem",
+      "ctrl-shift-d": "debug_panel::ToggleFocus",
+      "ctrl-shift-e": "project_panel::ToggleFocus",
+      "ctrl-shift-f": "pane::DeploySearch",
+      "ctrl-shift-p": "command_palette::Toggle",
+      "ctrl-shift-o": "outline::Toggle",
+      "alt-left": "pane::GoBack",
+      "alt-right": "pane::GoForward",
+      "f12": "editor::GoToDefinition",
+      "alt-f12": "editor::GoToDefinitionSplit",
+      "ctrl-f12": "editor::GoToImplementation",
+      "shift-alt-f12": "editor::FindAllReferences",
+    },
+  },
+  {
+    "context": "Editor && mode == full && !menu",
+    "bindings": {
+      "shift-enter": "editor::Newline",
+      "shift-left": "editor::SelectLeft",
+      "ctrl-left": "editor::MoveToPreviousWordStart",
+      "shift-up": "editor::SelectUp",
+      "ctrl-up": "editor::LineUp",
+      "shift-right": "editor::SelectRight",
+      "ctrl-right": "editor::MoveToNextWordEnd",
+      "shift-down": "editor::SelectDown",
+      "ctrl-down": "editor::LineDown",
+    },
+  },
+  {
+    "bindings": {
+      "f11": null,
+    },
+  },
+]
