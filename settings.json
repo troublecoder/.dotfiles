@@ -25,11 +25,11 @@
     "default_model": {
       "provider": "Z.ai",
       "model": "glm-5",
-      "enable_thinking": false,
     },
     "favorite_models": [],
     "model_parameters": [],
   },
+  "agent_buffer_font_size": 15,
   "agent_servers": {
     "github-copilot-cli": {
       "type": "registry",
@@ -44,10 +44,14 @@
       "type": "registry",
     },
   },
+  "agent_ui_font_size": 15,
   "autosave": "on_focus_change",
-  "buffer_font_family": "CaskaydiaMono Nerd Font Mono",
+  "auto_install_extensions": {},
+  "base_keymap": "VSCode",
+  "buffer_font_family": "CaskaydiaCove Nerd Font",
   "buffer_font_size": 15,
-  "buffer_font_fallbacks": ["D2CodingLigature Nerd Font Mono"],
+  "buffer_font_fallbacks": ["D2CodingLigature Nerd Font"],
+  "colorize_brackets": true,
   "context_servers": {
     "chrome-devtools-mcp-zed": {
       "enabled": false,
@@ -69,14 +73,42 @@
       },
     },
   },
+  "current_line_highlight": "all",
+  "cursor_blink": true,
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+    },
+  },
+  "edit_predictions": {
+    "provider": "copilot",
+    "copilot": {
+      "enable_next_edit_suggestions": true,
+    },
+  },
   "git": {
     "inline_blame": {
       "show_commit_summary": true,
     },
   },
   "icon_theme": "Zed (Default)",
+  "indent_guides": {
+    "enabled": true,
+    "line_width": 1,
+    "active_line_width": 1,
+    "coloring": "indent_aware",
+    "background_coloring": "indent_aware",
+  },
   "inlay_hints": {
     "enabled": true,
+  },
+  "languages": {
+    "YAML": {
+      "tab_size": 2,
+    },
+    "JSON": {
+      "tab_size": 2,
+    },
   },
   "language_models": {
     "openai_compatible": {
@@ -100,15 +132,74 @@
       },
     },
   },
+  "line_indicator_format": "long",
   "minimap": {
-    "max_width_columns": 42,
+    "max_width_columns": 64,
     "show": "always",
   },
-  "relative_line_numbers": "wrapped",
+  "relative_line_numbers": "enabled",
+  "restore_on_startup": "last_workspace",
   "semantic_tokens": "combined",
+  "session": {
+    "trust_all_worktrees": true,
+  },
   "show_whitespaces": "all",
+  "show_wrap_guides": true,
+  "ssh_connections": [
+    {
+      "host": "vision-gamma",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/bob/Projects/hello_al2023/./"
+          ]
+        }
+      ]
+    },
+    {
+      "host": "localhost",
+      "username": "ec2-user",
+      "port": 2222,
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/ec2-user"
+          ]
+        }
+      ]
+    },
+    {
+      "host": "172.28.143.150",
+      "username": "ec2-user",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/ec2-user"
+          ]
+        }
+      ]
+    },
+    {
+      "host": "172.28.143.150",
+      "username": "ec2-user",
+      "args": [],
+      "projects": []
+    }
+  ],
   "tabs": {
+    "file_icons": true,
     "git_status": true,
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "terminal": {
+    "copy_on_select": true,
+    "keep_selection_on_copy": true,
   },
   "theme": "Ayu Dark",
   "title_bar": {
@@ -121,15 +212,9 @@
   "vim": {
     "toggle_relative_line_numbers": true,
   },
+  "vim_mode": true,
   "which_key": {
     "enabled": true,
   },
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false,
-  },
-  "session": {
-    "trust_all_worktrees": true,
-  },
-  "vim_mode": true,
+  "wrap_guides": [80, 120],
 }
