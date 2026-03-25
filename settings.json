@@ -8,6 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "agent": {
+    "default_profile": "ask",
     "tool_permissions": {
       "default": "allow",
       "tools": {
@@ -178,7 +179,7 @@
     "show": "always",
   },
   "relative_line_numbers": "enabled",
-  "restore_on_startup": "last_workspace",
+  "restore_on_startup": "launchpad",
   "semantic_tokens": "combined",
   "session": {
     "trust_all_worktrees": true,
@@ -191,18 +192,7 @@
       "args": [],
       "projects": [
         {
-          "paths": ["/home/bob/Projects/hello_al2023/./"],
-        },
-      ],
-    },
-    {
-      "host": "localhost",
-      "username": "ec2-user",
-      "port": 2222,
-      "args": [],
-      "projects": [
-        {
-          "paths": ["/home/ec2-user"],
+          "paths": [],
         },
       ],
     },
@@ -215,12 +205,6 @@
           "paths": ["/home/ec2-user"],
         },
       ],
-    },
-    {
-      "host": "172.28.143.150",
-      "username": "ec2-user",
-      "args": [],
-      "projects": [],
     },
   ],
   "tabs": {
