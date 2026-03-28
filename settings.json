@@ -25,7 +25,7 @@
     },
     "default_model": {
       "provider": "Z.ai",
-      "model": "glm-5",
+      "model": "glm-5.1",
     },
     "favorite_models": [],
     "model_parameters": [],
@@ -39,13 +39,13 @@
       "type": "registry",
     },
     "codex-acp": {
-      "favorite_config_option_values": {
-        "reasoning_effort": ["high"],
-      },
       "type": "registry",
+      "default_mode": "full-access",
+      "default_model": "gpt-5.4",
     },
     "claude-acp": {
       "type": "registry",
+      "default_mode": "bypassPermissions",
     },
   },
   "agent_ui_font_size": 15,
@@ -95,6 +95,12 @@
       "show_commit_summary": true,
     },
   },
+  "git_panel": {
+    "file_icons": true,
+    "show_count_badge": true,
+    "sort_by_path": true,
+    "tree_view": true,
+  },
   "icon_theme": "Catppuccin Mocha",
   "indent_guides": {
     "enabled": true,
@@ -113,6 +119,25 @@
     "JSON": {
       "tab_size": 2,
     },
+    "Python": {
+      "language_servers": [
+        "ty",
+        "ruff",
+        "basedpyright",
+        "!pyrefly",
+        "!pyright",
+        "!pylsp",
+      ],
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "language_server": {
+            "name": "ruff",
+          },
+        },
+        { "code_action": "source.organizeImports.ruff" },
+      ],
+    },
   },
   "language_models": {
     "openai_compatible": {
@@ -120,7 +145,7 @@
         "api_url": "https://api.z.ai/api/coding/paas/v4",
         "available_models": [
           {
-            "name": "glm-5",
+            "name": "glm-5.1",
             "max_tokens": 200000,
             "max_output_tokens": 32000,
             "max_completion_tokens": 200000,
@@ -170,6 +195,37 @@
           "closureReturnTypeHints": {
             "enable": "always",
           },
+        },
+      },
+    },
+    "ruff": {
+      "initialization_options": {
+        "settings": {
+          "lint": {
+            "enable": true,
+          },
+          "lineLength": 120,
+        },
+      },
+    },
+    "basedpyright": {
+      "settings": {
+        "python.analysis": {
+          "diagnosticMode": "workspace",
+          "diagnosticSeverityOverrides": {
+            "reportAny": "none",
+            "reportMissingParameterType": "none",
+            "reportMissingTypeArgument": "none",
+            "reportMissingTypeStubs": "none",
+            "reportUnknownArgumentType": "none",
+            "reportUnknownLambdaType": "none",
+            "reportUnknownMemberType": "none",
+            "reportUnknownParameterType": "none",
+            "reportUnknownVariableType": "none",
+          },
+        },
+        "python": {
+          "pythonPath": ".venv/bin/python",
         },
       },
     },
