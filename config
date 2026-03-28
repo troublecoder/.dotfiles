@@ -1,0 +1,16 @@
+font-family = "CaskaydiaCove Nerd Font"
+font-family = "D2CodingLigature Nerd Font"
+font-size = 12
+font-thicken = true
+
+window-theme = dark
+
+copy-on-select = clipboard
+scrollback-limit = 100000
+
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+
+window-padding-x = 10
+window-padding-y = 10
+background-opacity = 0.95
