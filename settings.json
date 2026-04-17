@@ -8,45 +8,45 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "agent": {
-    "default_profile": "ask",
     "tool_permissions": {
       "default": "allow",
       "tools": {
         "restore_file_from_disk": {
-          "default": "confirm",
+          "default": "confirm"
         },
         "delete_path": {
-          "default": "confirm",
+          "default": "confirm"
         },
         "terminal": {
-          "default": "confirm",
-        },
-      },
+          "default": "confirm"
+        }
+      }
     },
     "default_model": {
       "provider": "Z.ai",
-      "model": "glm-5.1",
+      "model": "glm-5.1"
     },
     "favorite_models": [],
-    "model_parameters": [],
+    "model_parameters": []
   },
   "agent_buffer_font_size": 15,
   "agent_servers": {
     "github-copilot-cli": {
-      "type": "registry",
+      "type": "registry"
     },
     "gemini": {
       "type": "registry",
+      "default_mode": "bypassPermissions"
     },
     "codex-acp": {
       "type": "registry",
-      "default_mode": "full-access",
-      "default_model": "gpt-5.4",
+      "default_mode": "bypassPermissions",
+      "default_model": "gpt-5.4"
     },
     "claude-acp": {
       "type": "registry",
-      "default_mode": "bypassPermissions",
-    },
+      "default_mode": "bypassPermissions"
+    }
   },
   "agent_ui_font_size": 15,
   "autosave": "on_focus_change",
@@ -95,7 +95,7 @@
     "typst": true,
     "vue": true,
     "vue-snippets": true,
-    "xml": true,
+    "xml": true
   },
   "base_keymap": "VSCode",
   "buffer_font_family": "CaskaydiaCove Nerd Font",
@@ -103,49 +103,49 @@
   "buffer_font_fallbacks": ["D2CodingLigature Nerd Font"],
   "colorize_brackets": true,
   "context_servers": {
-    "chrome-devtools-mcp-zed": {
-      "enabled": false,
+    "Serena": {
+      "enabled": true,
       "remote": false,
-      "settings": {},
+      "command": "serena",
+      "args": ["start-mcp-server", "--project-from-cwd", "--context=codex"],
+      "env": {}
     },
-    "code-index": {
+    "Code Index": {
       "enabled": true,
       "remote": false,
       "command": "uvx",
       "args": ["code-index-mcp"],
-      "env": {},
+      "env": {}
     },
-    "mcp-server-context7": {
-      "enabled": true,
+    "chrome-devtools-mcp-zed": {
+      "enabled": false,
       "remote": false,
-      "settings": {
-        "context7_api_key": "",
-      },
-    },
+      "settings": {}
+    }
   },
   "current_line_highlight": "all",
   "cursor_blink": true,
   "diagnostics": {
     "inline": {
-      "enabled": true,
-    },
+      "enabled": true
+    }
   },
   "edit_predictions": {
     "provider": "copilot",
     "copilot": {
-      "enable_next_edit_suggestions": true,
-    },
+      "enable_next_edit_suggestions": true
+    }
   },
   "git": {
     "inline_blame": {
-      "show_commit_summary": true,
-    },
+      "show_commit_summary": true
+    }
   },
   "git_panel": {
     "file_icons": true,
     "show_count_badge": true,
     "sort_by_path": true,
-    "tree_view": true,
+    "tree_view": true
   },
   "icon_theme": "Catppuccin Mocha",
   "indent_guides": {
@@ -153,37 +153,148 @@
     "line_width": 1,
     "active_line_width": 1,
     "coloring": "indent_aware",
-    "background_coloring": "indent_aware",
+    "background_coloring": "indent_aware"
   },
   "inlay_hints": {
-    "enabled": true,
+    "enabled": true
   },
   "languages": {
-    "YAML": {
-      "tab_size": 2,
+    "CSS": {
+      "formatter": [
+        { "language_server": { "name": "biome" } },
+        {
+          "external": {
+            "command": "prettier",
+            "arguments": ["--stdin-filepath", "{buffer_path}"]
+          }
+        }
+      ]
+    },
+    "HTML": {
+      "formatter": [
+        { "language_server": { "name": "biome" } },
+        {
+          "external": {
+            "command": "prettier",
+            "arguments": ["--stdin-filepath", "{buffer_path}"]
+          }
+        }
+      ]
+    },
+    "JavaScript": {
+      "formatter": [
+        { "language_server": { "name": "biome" } },
+        {
+          "external": {
+            "command": "prettier",
+            "arguments": ["--stdin-filepath", "{buffer_path}"]
+          }
+        }
+      ],
+      "language_servers": ["vtsls", "..."],
+      "prettier": { "allowed": false },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true
+      }
     },
     "JSON": {
-      "tab_size": 2,
+      "formatter": [
+        { "language_server": { "name": "biome" } },
+        {
+          "external": {
+            "command": "prettier",
+            "arguments": ["--stdin-filepath", "{buffer_path}"]
+          }
+        }
+      ]
+    },
+    "JSONC": {
+      "formatter": [
+        { "language_server": { "name": "biome" } },
+        {
+          "external": {
+            "command": "prettier",
+            "arguments": ["--stdin-filepath", "{buffer_path}"]
+          }
+        }
+      ]
+    },
+    "Markdown": {
+      "show_edit_predictions": false
     },
     "Python": {
-      "language_servers": [
-        "ty",
-        "ruff",
-        "basedpyright",
-        "!pyrefly",
-        "!pyright",
-        "!pylsp",
-      ],
-      "format_on_save": "on",
       "formatter": [
         {
           "language_server": {
-            "name": "ruff",
-          },
+            "name": "ruff"
+          }
         },
-        { "code_action": "source.organizeImports.ruff" },
+        { "code_action": "source.organizeImports.ruff" }
       ],
+      "language_servers": [
+        "ty",
+        "ruff",
+        "!basedpyright",
+        "!pyrefly",
+        "!pyright",
+        "!pylsp"
+      ]
     },
+    "Vue.js": {
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true
+      },
+      "formatter": [
+        { "language_server": { "name": "biome" } },
+        {
+          "external": {
+            "command": "prettier",
+            "arguments": ["--stdin-filepath", "{buffer_path}"]
+          }
+        }
+      ],
+      "prettier": { "allowed": false },
+      "language_servers": ["vue-language-server", "vtsls", "..."]
+    },
+    "TSX": {
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true
+      },
+      "formatter": [
+        { "language_server": { "name": "biome" } },
+        {
+          "external": {
+            "command": "prettier",
+            "arguments": ["--stdin-filepath", "{buffer_path}"]
+          }
+        }
+      ],
+      "prettier": { "allowed": false },
+      "language_servers": ["vtsls", "..."]
+    },
+    "TypeScript": {
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true
+      },
+      "formatter": [
+        { "language_server": { "name": "biome" } },
+        {
+          "external": {
+            "command": "prettier",
+            "arguments": ["--stdin-filepath", "{buffer_path}"]
+          }
+        }
+      ],
+      "prettier": { "allowed": false },
+      "language_servers": ["vtsls", "..."]
+    },
+    "YAML": {
+      "tab_size": 2
+    }
   },
   "language_models": {
     "openai_compatible": {
@@ -200,60 +311,15 @@
               "images": false,
               "parallel_tool_calls": false,
               "prompt_cache_key": false,
-              "chat_completions": true,
-            },
-          },
-        ],
-      },
-    },
+              "chat_completions": true
+            }
+          }
+        ]
+      }
+    }
   },
   "line_indicator_format": "long",
   "lsp": {
-    "rust-analyzer": {
-      "initialization_options": {
-        "check": {
-          "command": "clippy",
-        },
-        "cargo": {
-          "allFeatures": true,
-          "loadOutDirsFromCheck": true,
-          "buildScripts": {
-            "enable": true,
-          },
-        },
-        "procMacro": {
-          "enable": true,
-          "ignored": {
-            "async-trait": ["async_trait"],
-            "napi-derive": ["napi"],
-            "async-recursion": ["async_recursion"],
-          },
-        },
-        "rust": {
-          "analyzerTargetDir": true,
-        },
-        "inlayHints": {
-          "maxLength": null,
-          "lifetimeElisionHints": {
-            "enable": "skip_trivial",
-            "useParameterNames": true,
-          },
-          "closureReturnTypeHints": {
-            "enable": "always",
-          },
-        },
-      },
-    },
-    "ruff": {
-      "initialization_options": {
-        "settings": {
-          "lint": {
-            "enable": true,
-          },
-          "lineLength": 120,
-        },
-      },
-    },
     "basedpyright": {
       "settings": {
         "python.analysis": {
@@ -267,24 +333,88 @@
             "reportUnknownLambdaType": "none",
             "reportUnknownMemberType": "none",
             "reportUnknownParameterType": "none",
-            "reportUnknownVariableType": "none",
-          },
+            "reportUnknownVariableType": "none"
+          }
         },
         "python": {
-          "pythonPath": ".venv/bin/python",
-        },
-      },
+          "pythonPath": ".venv/bin/python"
+        }
+      }
     },
+    "biome": {
+      "settings": {
+        "require_config_file": true
+      }
+    },
+    "ruff": {
+      "initialization_options": {
+        "settings": {
+          "lint": {
+            "enable": true
+          },
+          "lineLength": 120
+        }
+      }
+    },
+    "rust-analyzer": {
+      "initialization_options": {
+        "check": {
+          "command": "clippy"
+        },
+        "cargo": {
+          "allFeatures": true,
+          "loadOutDirsFromCheck": true,
+          "buildScripts": {
+            "enable": true
+          }
+        },
+        "procMacro": {
+          "enable": true,
+          "ignored": {
+            "async-trait": ["async_trait"],
+            "napi-derive": ["napi"],
+            "async-recursion": ["async_recursion"]
+          }
+        },
+        "rust": {
+          "analyzerTargetDir": true
+        },
+        "inlayHints": {
+          "maxLength": null,
+          "lifetimeElisionHints": {
+            "enable": "skip_trivial",
+            "useParameterNames": true
+          },
+          "closureReturnTypeHints": {
+            "enable": "always"
+          }
+        }
+      }
+    },
+    "vue-language-server": {
+      "initialization_options": {
+        "typescript": {
+          "tsdk": "node_modules/typescript/lib"
+        }
+      }
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "tailwindCSS": {
+          "emmetCompletions": true
+        }
+      }
+    }
   },
   "minimap": {
     "max_width_columns": 64,
-    "show": "always",
+    "show": "always"
   },
   "relative_line_numbers": "enabled",
   "restore_on_startup": "launchpad",
   "semantic_tokens": "combined",
   "session": {
-    "trust_all_worktrees": true,
+    "trust_all_worktrees": true
   },
   "show_whitespaces": "all",
   "show_wrap_guides": true,
@@ -294,48 +424,58 @@
       "args": [],
       "projects": [
         {
-          "paths": [],
+          "paths": ["/home/bob"]
         },
-      ],
+        {
+          "paths": ["/home/bob/Projects/colpali_classification"]
+        },
+        {
+          "paths": ["/home/bob/Projects/gliner2_doc/./"]
+        },
+        {
+          "paths": ["/home/bob/Projects/ocr_selvas-studio-kie/./"]
+        }
+      ]
     },
     {
-      "host": "172.28.143.150",
+      "host": "172.19.218.179",
       "username": "ec2-user",
       "args": [],
       "projects": [
         {
-          "paths": ["/home/ec2-user"],
-        },
-      ],
-    },
+          "paths": ["/home/ec2-user"]
+        }
+      ]
+    }
   ],
   "tabs": {
     "file_icons": true,
-    "git_status": true,
+    "git_status": true
   },
   "telemetry": {
     "diagnostics": false,
-    "metrics": false,
+    "metrics": false
   },
   "terminal": {
     "copy_on_select": true,
-    "keep_selection_on_copy": true,
+    "keep_selection_on_copy": true
   },
   "theme": "Catppuccin Mocha",
   "title_bar": {
-    "show_branch_icon": true,
+    "show_branch_icon": true
   },
   "toolbar": {
-    "code_actions": true,
+    "code_actions": true
   },
   "ui_font_size": 16,
   "vim": {
     "toggle_relative_line_numbers": true,
+    "use_system_clipboard": "always"
   },
   "vim_mode": true,
   "which_key": {
     "enabled": true,
-    "delay_ms": 0,
+    "delay_ms": 0
   },
-  "wrap_guides": [80, 120],
+  "wrap_guides": [80, 120]
 }
