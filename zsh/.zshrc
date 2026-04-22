@@ -100,7 +100,7 @@ register_alias_if_exists htop top
 
 # ---------- environment ----------
 export TERM="xterm-256color"
-export PATH="/home/bob/.pixi/bin:$PATH"
+export PATH="$HOME/.pixi/bin:$PATH"
 
 # local env loader
 if [[ -e "$HOME/.local/bin/env" ]]; then
@@ -114,10 +114,10 @@ fi
 
 # mise
 if [[ -x "$HOME/.local/bin/mise" ]]; then
-  eval "$(/home/bob/.local/bin/mise activate zsh)"
+  eval "$("$HOME/.local/bin/mise" activate zsh)"
 fi
 
 # rustup
-if [[ -x "$HOME/.cargo/env" ]]; then
+if [[ -f "$HOME/.cargo/env" ]]; then
   . "$HOME/.cargo/env"
 fi
