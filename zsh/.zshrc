@@ -102,6 +102,12 @@ register_alias_if_exists htop top
 export TERM="xterm-256color"
 export PATH="$HOME/.pixi/bin:$PATH"
 
+_local_nvim_bin="$HOME/.local/opt/nvim-linux-x86_64/bin"
+if [[ -d "$_local_nvim_bin" ]]; then
+  export PATH="$_local_nvim_bin:$PATH"
+fi
+unset _local_nvim_bin
+
 # local env loader
 if [[ -e "$HOME/.local/bin/env" ]]; then
   . "$HOME/.local/bin/env"
