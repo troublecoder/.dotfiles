@@ -1,0 +1,125 @@
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+
+[projects."C:\\Users\\tskim\\Projects"]
+trust_level = "trusted"
+
+[projects."c:\\users\\tskim\\projects\\hello_train"]
+trust_level = "trusted"
+
+[projects."c:\\users\\tskim\\projects\\pii_detection"]
+trust_level = "trusted"
+
+[projects."c:\\users\\tskim\\projects\\ocr_selvas-masker"]
+trust_level = "trusted"
+
+[projects."C:\\Users\\tskim\\Projects\\ocr_selvas-masker"]
+trust_level = "trusted"
+
+[projects."c:\\users\\tskim"]
+trust_level = "trusted"
+
+[projects."c:\\users\\tskim\\projects\\selvyocrforkbbank_vs2015"]
+trust_level = "trusted"
+
+[features]
+remote_connections = true
+memories = true
+goals = true
+
+[windows]
+sandbox = "unelevated"
+
+[mcp_servers.serena]
+command = "serena"
+args = [ "start-mcp-server", "--project-from-cwd", "--context=codex" ]
+startup_timeout_sec = 15
+
+[mcp_servers.context7]
+command = "npx"
+args = [ "-y", "@upstash/context7-mcp", "--api-key", "YOUR_API_KEY" ]
+
+[mcp_servers.code-index]
+command = "uvx"
+args = [ "code-index-mcp" ]
+
+[mcp_servers.code-index.tools.set_project_path]
+approval_mode = "approve"
+
+[mcp_servers.code-index.tools.get_file_summary]
+approval_mode = "approve"
+
+[mcp_servers.code-index.tools.build_deep_index]
+approval_mode = "approve"
+
+[mcp_servers.code-index.tools.search_code_advanced]
+approval_mode = "approve"
+
+[mcp_servers.debugmcp]
+url = "http://localhost:3001/mcp"
+
+[mcp_servers.chrome-devtools]
+command = "npx"
+args = [ "chrome-devtools-mcp@latest", "--no-usage-statistics" ]
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."superpowers@openai-curated"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
+enabled = true
+
+[plugins."build-web-apps@openai-curated"]
+enabled = true
+
+[plugins."codex-security@openai-curated"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[marketplaces.openai-bundled]
+last_updated = "2026-05-21T22:19:51Z"
+source_type = "local"
+source = '\\?\C:\Users\tskim\.codex\.tmp\bundled-marketplaces\openai-bundled'
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-05-21T22:30:06Z"
+source_type = "local"
+source = '\\?\C:\Users\tskim\.cache\codex-runtimes\codex-primary-runtime\plugins\openai-primary-runtime'
+
+[[skills.config]]
+name = "build-web-apps:react-best-practices"
+enabled = false
+
+[[skills.config]]
+name = "build-web-apps:shadcn"
+enabled = false
+
+[[skills.config]]
+name = "build-web-apps:stripe-best-practices"
+enabled = false
+
+[[skills.config]]
+name = "build-web-apps:supabase-postgres-best-practices"
+enabled = false
+
+[memories]
+generate_memories = true
+use_memories = true
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
