@@ -1,88 +1,10 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-
-# Path to your Oh My Zsh installation.
+# ─── Oh My Zsh ──────────────────────────────────────────────
 export ZSH="$HOME/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="spaceship"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-# ---------- helpers ----------
-register_alias_if_exists() {
-  if command -v "$1" >/dev/null 2>&1; then
-    alias "$2"="$1"
-  fi
-}
-
-# ---------- history / zsh ----------
+# ─── History ────────────────────────────────────────────────
 HISTSIZE=1000000
 SAVEHIST=1000000
 
@@ -92,38 +14,51 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_SPACE
 setopt INTERACTIVE_COMMENTS
 
-# ---------- aliases ----------
+# ─── Environment ────────────────────────────────────────────
+export TERM="xterm-256color"
+
+# EDITOR / VISUAL: zed when available, else nvim/vim
+if command -v zed >/dev/null 2>&1; then
+  export EDITOR="zed --wait"
+  export VISUAL="zed --wait"
+elif command -v nvim >/dev/null 2>&1; then
+  export EDITOR="nvim"
+  export VISUAL="nvim"
+else
+  export EDITOR="vim"
+  export VISUAL="vim"
+fi
+
+# PATH: pixi
+export PATH="$HOME/.pixi/bin:$PATH"
+
+# PATH: local nvim
+_local_nvim_bin="$HOME/.local/opt/nvim-linux-x86_64/bin"
+[[ -d "$_local_nvim_bin" ]] && export PATH="$_local_nvim_bin:$PATH"
+unset _local_nvim_bin
+
+# local env loader
+[[ -e "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
+
+# ─── Aliases ────────────────────────────────────────────────
+register_alias_if_exists() {
+  if command -v "$1" >/dev/null 2>&1; then
+    alias "$2"="$1"
+  fi
+}
+
 register_alias_if_exists nvim vim
 register_alias_if_exists nvim vi
 register_alias_if_exists eza ls
 register_alias_if_exists htop top
 
-# ---------- environment ----------
-export TERM="xterm-256color"
-export PATH="$HOME/.pixi/bin:$PATH"
+# ─── Tool Integrations ─────────────────────────────────────
 
-_local_nvim_bin="$HOME/.local/opt/nvim-linux-x86_64/bin"
-if [[ -d "$_local_nvim_bin" ]]; then
-  export PATH="$_local_nvim_bin:$PATH"
-fi
-unset _local_nvim_bin
-
-# local env loader
-if [[ -e "$HOME/.local/bin/env" ]]; then
-  . "$HOME/.local/bin/env"
-fi
-
-# uv completion
-if command -v uv >/dev/null 2>&1; then
-  eval "$(uv generate-shell-completion zsh)"
-fi
+# uv
+command -v uv >/dev/null 2>&1 && eval "$(uv generate-shell-completion zsh)"
 
 # mise
-if [[ -x "$HOME/.local/bin/mise" ]]; then
-  eval "$("$HOME/.local/bin/mise" activate zsh)"
-fi
+command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 
 # rustup
-if [[ -f "$HOME/.cargo/env" ]]; then
-  . "$HOME/.cargo/env"
-fi
+[[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"

@@ -22,7 +22,7 @@
   "auto_signature_help": true,
   "mouse_wheel_zoom": true,
   "diff_view_style": "split",
-  "cli_default_open_behavior": "existing_window",
+  "cli_default_open_behavior": "new_window",
   "agent": {
     "dock": "left",
     "expand_edit_card": false,

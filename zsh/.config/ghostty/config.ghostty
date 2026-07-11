@@ -1,0 +1,57 @@
+#
+# Ghostty - sleek modern setup
+#
+
+# --- Theme ---
+theme = catppuccin-mocha.conf
+
+# --- Font ---
+font-family = CaskaydiaCove Nerd Font
+font-size = 14
+font-feature = calt
+font-feature = liga
+font-thicken = true
+adjust-cell-height = 15%
+
+# --- Window ---
+background-opacity = 0.92
+background-blur-radius = 20
+window-padding-x = 14
+window-padding-y = 12
+window-padding-balance = true
+window-decoration = false
+window-theme = ghostty
+macos-titlebar-style = tabs
+window-save-state = always
+window-colorspace = display-p3
+
+# --- Default Window Size ---
+window-width = 140
+window-height = 38
+
+# --- Cursor ---
+cursor-style = block
+cursor-style-blink = true
+cursor-color = #cba6f7
+
+# --- Mouse & Selection ---
+copy-on-select = clipboard
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 3
+
+# --- macOS ---
+macos-option-as-alt = true
+macos-icon = official
+macos-icon-ghost-color = #cba6f7
+macos-icon-screen-color = #11111b
+
+# --- Shell ---
+shell-integration = detect
+shell-integration-features = cursor,sudo,title
+
+# --- Misc ---
+confirm-close-surface = false
+clipboard-read = allow
+clipboard-write = allow
+auto-update = check
+resize-overlay = never
