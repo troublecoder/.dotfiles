@@ -1,3 +1,12 @@
+{{- if eq .chezmoi.os "darwin" -}}
+[
+  {
+    "bindings": {
+      "alt-p": "text_finder::Toggle"
+    }
+  }
+]
+{{- else -}}
 // Zed keymap
 //
 // For information on binding keys, see the Zed
@@ -17,14 +26,6 @@
     },
   },
   {
-    "bindings": {
-      "ctrl-alt-c": [
-        "agent::NewExternalAgentThread",
-        { "agent": { "custom": { "name": "codex-acp" } } },
-      ],
-    },
-  },
-  {
     "context": "Pane",
     "unbind": {
       "ctrl-w": [
@@ -41,3 +42,4 @@
     }
   }
 ]
+{{- end }}

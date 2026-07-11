@@ -1,0 +1,22 @@
+{{- if eq .chezmoi.os "linux" -}}
+#!/bin/sh
+set -eu
+
+if command -v mise >/dev/null 2>&1; then
+  exit 0
+fi
+
+if ! command -v curl >/dev/null 2>&1; then
+  printf '오류: mise 설치에 필요한 curl을 찾을 수 없습니다.\n' >&2
+  exit 1
+fi
+
+installer=$(mktemp)
+trap 'rm -f "$installer"' EXIT HUP INT TERM
+if ! curl -fsSL --output "$installer" https://mise.run; then
+  printf '오류: mise 공식 설치 스크립트를 내려받지 못했습니다.\n' >&2
+  exit 1
+fi
+
+/bin/sh "$installer"
+{{- end -}}

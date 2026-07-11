@@ -1,0 +1,101 @@
+{{- if eq .chezmoi.os "windows" }}
+$ErrorActionPreference = 'Stop'
+
+$sourceFile = Join-Path $HOME ".claude/CLAUDE.md"
+$targetDirectory = Join-Path $HOME ".codex"
+$targetFile = Join-Path $targetDirectory "AGENTS.md"
+$cacheDirectory = {{ .chezmoi.cacheDir | quote }}
+$cacheFile = {{ joinPath .chezmoi.cacheDir "agent-instructions.last" | quote }}
+
+if (-not (Test-Path -LiteralPath $sourceFile -PathType Leaf)) {
+    Write-Error "오류: 하드링크 원본 지침 파일이 없습니다: $sourceFile"
+    exit 1
+}
+
+New-Item -ItemType Directory -Force -Path $targetDirectory | Out-Null
+
+$targetExists = Test-Path -LiteralPath $targetFile -PathType Leaf
+if ($targetExists) {
+    $sourceHash = (Get-FileHash -LiteralPath $sourceFile).Hash
+    $targetHash = (Get-FileHash -LiteralPath $targetFile).Hash
+
+    if ($sourceHash -ne $targetHash) {
+        Write-Error "오류: 기존 ~/.codex/AGENTS.md의 내용이 원본 지침과 다릅니다."
+        exit 1
+    }
+}
+
+$temporaryFile = Join-Path $targetDirectory (".AGENTS.md.{0}.tmp" -f [Guid]::NewGuid().ToString("N"))
+$backupFile = Join-Path $targetDirectory (".AGENTS.md.{0}.bak" -f [Guid]::NewGuid().ToString("N"))
+
+try {
+    New-Item -ItemType HardLink -Path $temporaryFile -Target $sourceFile | Out-Null
+
+    if ($targetExists) {
+        New-Item -ItemType HardLink -Path $backupFile -Target $targetFile | Out-Null
+        Remove-Item -LiteralPath $targetFile -ErrorAction Stop
+    }
+
+    [System.IO.File]::Move($temporaryFile, $targetFile)
+}
+catch {
+    $originalError = $_
+
+    if (-not (Test-Path -LiteralPath $targetFile -PathType Leaf) -and
+        (Test-Path -LiteralPath $backupFile -PathType Leaf)) {
+        try {
+            [System.IO.File]::Move($backupFile, $targetFile)
+        }
+        catch {
+            Write-Error "오류: 기존 Codex 지침을 복구하지 못했습니다. 보존된 파일: $backupFile"
+        }
+    }
+
+    throw $originalError
+}
+finally {
+    if (Test-Path -LiteralPath $temporaryFile -PathType Leaf) {
+        Remove-Item -LiteralPath $temporaryFile -Force -ErrorAction SilentlyContinue
+    }
+
+    if ((Test-Path -LiteralPath $targetFile -PathType Leaf) -and
+        (Test-Path -LiteralPath $backupFile -PathType Leaf)) {
+        Remove-Item -LiteralPath $backupFile -Force -ErrorAction SilentlyContinue
+    }
+}
+
+New-Item -ItemType Directory -Force -Path $cacheDirectory | Out-Null
+$cacheTemporaryFile = Join-Path $cacheDirectory (".agent-instructions.last.{0}.tmp" -f [Guid]::NewGuid().ToString("N"))
+$cacheBackupFile = Join-Path $cacheDirectory (".agent-instructions.last.{0}.bak" -f [Guid]::NewGuid().ToString("N"))
+
+try {
+    [System.IO.File]::Copy($sourceFile, $cacheTemporaryFile)
+
+    if (Test-Path -LiteralPath $cacheFile -PathType Leaf) {
+        [System.IO.File]::Replace($cacheTemporaryFile, $cacheFile, $cacheBackupFile)
+    }
+    else {
+        [System.IO.File]::Move($cacheTemporaryFile, $cacheFile)
+    }
+}
+catch {
+    $cacheError = $_
+
+    if (-not (Test-Path -LiteralPath $cacheFile -PathType Leaf) -and
+        (Test-Path -LiteralPath $cacheBackupFile -PathType Leaf)) {
+        [System.IO.File]::Move($cacheBackupFile, $cacheFile)
+    }
+
+    throw $cacheError
+}
+finally {
+    if (Test-Path -LiteralPath $cacheTemporaryFile -PathType Leaf) {
+        Remove-Item -LiteralPath $cacheTemporaryFile -Force -ErrorAction SilentlyContinue
+    }
+
+    if ((Test-Path -LiteralPath $cacheFile -PathType Leaf) -and
+        (Test-Path -LiteralPath $cacheBackupFile -PathType Leaf)) {
+        Remove-Item -LiteralPath $cacheBackupFile -Force -ErrorAction SilentlyContinue
+    }
+}
+{{- end -}}

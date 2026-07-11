@@ -1,0 +1,28 @@
+{{- if ne .chezmoi.os "windows" -}}
+#!/bin/sh
+set -eu
+
+target_file="$HOME/.codex/AGENTS.md"
+cache_file={{ joinPath .chezmoi.cacheDir "agent-instructions.last" | quote }}
+intended_file={{ joinPath .chezmoi.workingTree "CLAUDE.md" | quote }}
+
+if [ ! -e "$target_file" ] && [ ! -L "$target_file" ]; then
+  exit 0
+fi
+
+if [ ! -f "$target_file" ]; then
+  printf '오류: 기존 ~/.codex/AGENTS.md가 일반 파일이 아닙니다. 기존 대상을 보존합니다.\n' >&2
+  exit 1
+fi
+
+if [ -f "$cache_file" ] && cmp -s "$target_file" "$cache_file"; then
+  exit 0
+fi
+
+if cmp -s "$target_file" "$intended_file"; then
+  exit 0
+fi
+
+printf '오류: 기존 ~/.codex/AGENTS.md가 마지막 성공 배포 내용이나 현재 CLAUDE.md와 다릅니다. 기존 파일을 보존합니다.\n' >&2
+exit 1
+{{- end -}}

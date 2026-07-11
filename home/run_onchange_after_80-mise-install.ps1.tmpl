@@ -1,0 +1,19 @@
+{{- if eq .chezmoi.os "windows" -}}
+$ErrorActionPreference = 'Stop'
+# mise 설정 체크섬: {{ include (joinPath .chezmoi.sourceDir "dot_config/mise/config.toml") | sha256sum }}
+
+$wingetLinks = Join-Path $env:LOCALAPPDATA "Microsoft\WinGet\Links"
+$pathEntries = $env:PATH -split [IO.Path]::PathSeparator
+if ($pathEntries -notcontains $wingetLinks) {
+    $env:PATH = "$wingetLinks$([IO.Path]::PathSeparator)$env:PATH"
+}
+
+if (-not (Get-Command mise -ErrorAction SilentlyContinue)) {
+    throw "오류: mise를 찾을 수 없습니다. 운영체제별 mise 설치를 먼저 완료하세요."
+}
+
+mise install --yes
+if ($LASTEXITCODE -ne 0) {
+    throw "오류: mise 도구 설치에 실패했습니다. 종료 코드: $LASTEXITCODE"
+}
+{{- end -}}

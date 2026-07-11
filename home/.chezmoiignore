@@ -1,0 +1,11 @@
+{{ if eq .chezmoi.os "windows" }}
+.zprofile
+.zshrc
+.tmux.conf
+.tmux.conf.local
+.oh-my-zsh
+.config/spaceship.zsh
+.config/ghostty
+{{ else }}
+AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
+{{ end }}

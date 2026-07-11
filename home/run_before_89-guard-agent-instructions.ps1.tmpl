@@ -1,0 +1,39 @@
+{{- if eq .chezmoi.os "windows" }}
+$ErrorActionPreference = 'Stop'
+
+$targetFile = Join-Path $HOME ".codex/AGENTS.md"
+$cacheFile = {{ joinPath .chezmoi.cacheDir "agent-instructions.last" | quote }}
+$intendedFile = {{ joinPath .chezmoi.workingTree "CLAUDE.md" | quote }}
+$targetItem = Get-Item -LiteralPath $targetFile -Force -ErrorAction SilentlyContinue
+
+if ($null -eq $targetItem) {
+    exit 0
+}
+
+if (-not (Test-Path -LiteralPath $targetFile -PathType Leaf)) {
+    Write-Error "오류: 기존 ~/.codex/AGENTS.md가 일반 파일이 아닙니다. 기존 대상을 보존합니다."
+    exit 1
+}
+
+function Test-FileBytesEqual {
+    param(
+        [string] $Left,
+        [string] $Right
+    )
+
+    if (-not (Test-Path -LiteralPath $Right -PathType Leaf)) {
+        return $false
+    }
+
+    return (Get-FileHash -LiteralPath $Left).Hash -eq
+        (Get-FileHash -LiteralPath $Right).Hash
+}
+
+if ((Test-FileBytesEqual -Left $targetFile -Right $cacheFile) -or
+    (Test-FileBytesEqual -Left $targetFile -Right $intendedFile)) {
+    exit 0
+}
+
+Write-Error "오류: 기존 ~/.codex/AGENTS.md가 마지막 성공 배포 내용이나 현재 CLAUDE.md와 다릅니다. 기존 파일을 보존합니다."
+exit 1
+{{- end -}}

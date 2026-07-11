@@ -1,0 +1,16 @@
+{{- if ne .chezmoi.os "windows" -}}
+#!/bin/sh
+# mise 설정 체크섬: {{ include (joinPath .chezmoi.sourceDir "dot_config/mise/config.toml") | sha256sum }}
+set -eu
+
+if mise_command=$(command -v mise 2>/dev/null); then
+  :
+elif [ -x "$HOME/.local/bin/mise" ]; then
+  mise_command="$HOME/.local/bin/mise"
+else
+  printf '오류: mise를 찾을 수 없습니다. 운영체제별 mise 설치를 먼저 완료하세요.\n' >&2
+  exit 1
+fi
+
+"$mise_command" install --yes
+{{- end -}}

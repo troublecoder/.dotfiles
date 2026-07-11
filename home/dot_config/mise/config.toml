@@ -1,0 +1,8 @@
+[tools]
+node = "lts"
+npm = "latest"
+pnpm = "latest"
+ripgrep = "latest"
+rust = "latest"
+rust-analyzer = "latest"
+uv = "latest"

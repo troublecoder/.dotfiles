@@ -22,9 +22,13 @@ window-padding-y = 12
 window-padding-balance = true
 window-decoration = false
 window-theme = ghostty
+{{ if eq .chezmoi.os "darwin" }}
 macos-titlebar-style = tabs
+{{ end }}
 window-save-state = always
+{{ if eq .chezmoi.os "darwin" }}
 window-colorspace = display-p3
+{{ end }}
 
 # --- Default Window Size ---
 window-width = 140
@@ -43,10 +47,12 @@ mouse-hide-while-typing = true
 mouse-scroll-multiplier = 3
 
 # --- macOS ---
+{{ if eq .chezmoi.os "darwin" }}
 macos-option-as-alt = true
 macos-icon = official
 macos-icon-ghost-color = #cba6f7
 macos-icon-screen-color = #11111b
+{{ end }}
 
 # --- Shell ---
 shell-integration = detect
@@ -56,5 +62,7 @@ shell-integration-features = cursor,sudo,title
 confirm-close-surface = false
 clipboard-read = allow
 clipboard-write = allow
+{{ if eq .chezmoi.os "darwin" }}
 auto-update = check
+{{ end }}
 resize-overlay = never

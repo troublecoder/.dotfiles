@@ -121,21 +121,21 @@
   "buffer_font_fallbacks": ["D2CodingLigature Nerd Font"],
   "colorize_brackets": true,
   "context_servers": {
-    "Serena": {
+    "serena": {
       "enabled": true,
       "remote": false,
       "command": "serena",
       "args": ["start-mcp-server", "--project-from-cwd", "--context=codex"],
       "env": {}
     },
-    "Code Index": {
+    "code-index": {
       "enabled": true,
       "remote": false,
       "command": "uvx",
       "args": ["code-index-mcp"],
       "env": {}
     },
-    "chrome-devtools-mcp-zed": {
+    "chrome-devtools": {
       "enabled": false,
       "remote": false,
       "settings": {}
@@ -179,66 +179,8 @@
     "enabled": true
   },
   "languages": {
-    "CSS": {
-      "formatter": [
-        { "language_server": { "name": "biome" } },
-        {
-          "external": {
-            "command": "prettier",
-            "arguments": ["--stdin-filepath", "{buffer_path}"]
-          }
-        }
-      ]
-    },
-    "HTML": {
-      "formatter": [
-        { "language_server": { "name": "biome" } },
-        {
-          "external": {
-            "command": "prettier",
-            "arguments": ["--stdin-filepath", "{buffer_path}"]
-          }
-        }
-      ]
-    },
     "JavaScript": {
-      "formatter": [
-        { "language_server": { "name": "biome" } },
-        {
-          "external": {
-            "command": "prettier",
-            "arguments": ["--stdin-filepath", "{buffer_path}"]
-          }
-        }
-      ],
-      "language_servers": ["vtsls", "..."],
-      "prettier": { "allowed": false },
-      "code_actions_on_format": {
-        "source.fixAll.biome": true,
-        "source.organizeImports.biome": true
-      }
-    },
-    "JSON": {
-      "formatter": [
-        { "language_server": { "name": "biome" } },
-        {
-          "external": {
-            "command": "prettier",
-            "arguments": ["--stdin-filepath", "{buffer_path}"]
-          }
-        }
-      ]
-    },
-    "JSONC": {
-      "formatter": [
-        { "language_server": { "name": "biome" } },
-        {
-          "external": {
-            "command": "prettier",
-            "arguments": ["--stdin-filepath", "{buffer_path}"]
-          }
-        }
-      ]
+      "language_servers": ["vtsls", "..."]
     },
     "Kotlin": {
       "language_servers": ["kotlin-lsp"]
@@ -265,54 +207,12 @@
       ]
     },
     "Vue.js": {
-      "code_actions_on_format": {
-        "source.fixAll.biome": true,
-        "source.organizeImports.biome": true
-      },
-      "formatter": [
-        { "language_server": { "name": "biome" } },
-        {
-          "external": {
-            "command": "prettier",
-            "arguments": ["--stdin-filepath", "{buffer_path}"]
-          }
-        }
-      ],
-      "prettier": { "allowed": false },
       "language_servers": ["vue-language-server", "vtsls", "..."]
     },
     "TSX": {
-      "code_actions_on_format": {
-        "source.fixAll.biome": true,
-        "source.organizeImports.biome": true
-      },
-      "formatter": [
-        { "language_server": { "name": "biome" } },
-        {
-          "external": {
-            "command": "prettier",
-            "arguments": ["--stdin-filepath", "{buffer_path}"]
-          }
-        }
-      ],
-      "prettier": { "allowed": false },
       "language_servers": ["vtsls", "..."]
     },
     "TypeScript": {
-      "code_actions_on_format": {
-        "source.fixAll.biome": true,
-        "source.organizeImports.biome": true
-      },
-      "formatter": [
-        { "language_server": { "name": "biome" } },
-        {
-          "external": {
-            "command": "prettier",
-            "arguments": ["--stdin-filepath", "{buffer_path}"]
-          }
-        }
-      ],
-      "prettier": { "allowed": false },
       "language_servers": ["vtsls", "..."]
     },
     "YAML": {
@@ -325,8 +225,8 @@
         "api_url": "https://api.z.ai/api/coding/paas/v4",
         "available_models": [
           {
-            "name": "glm-5.1",
-            "max_tokens": 200000,
+            "name": "glm-5.2",
+            "max_tokens": 1000000,
             "max_output_tokens": 32000,
             "max_completion_tokens": 200000,
             "capabilities": {
@@ -364,11 +264,6 @@
         }
       }
     },
-    "biome": {
-      "settings": {
-        "require_config_file": true
-      }
-    },
     "kotlin-language-server": {
       "settings": {
         "compiler": {
@@ -378,12 +273,14 @@
         }
       }
     },
+{{ if eq .chezmoi.os "windows" }}
     "kotlin-lsp": {
       "binary": {
-        "path": "C:/Users/tskim/AppData/Local/Zed/extensions/work/kotlin/kotlin-lsp-262.4739.0/bin/intellij-server.exe",
+        "path": "{{ joinPath .chezmoi.homeDir "AppData" "Local" "Zed" "extensions" "work" "kotlin" "kotlin-lsp-262.4739.0" "bin" "intellij-server.exe" }}",
         "arguments": ["--stdio"]
       }
     },
+{{ end }}
     "ruff": {
       "initialization_options": {
         "settings": {
@@ -529,6 +426,7 @@
     "show": "always"
   },
   "relative_line_numbers": "enabled",
+  "resize_all_panels_in_dock": ["right"],
   "restore_on_startup": "launchpad",
   "semantic_tokens": "combined",
   "session": {
@@ -537,37 +435,6 @@
   "show_whitespaces": "all",
   "show_wrap_guides": true,
   "ssh_connections": [
-    {
-      "host": "vision-gamma",
-      "args": [],
-      "projects": [
-        {
-          "paths": ["/home/bob/Projects/my-my-app"]
-        },
-        {
-          "paths": ["/home/bob/Projects/colpali_classification"]
-        },
-        {
-          "paths": ["/home/bob/Projects/gliner2_doc"]
-        },
-        {
-          "paths": ["/home/bob/Projects/ocr_selvas-studio-kie"]
-        },
-        {
-          "paths": ["/home/bob/Projects/ocr_selvas-studio-kie/frontend"]
-        }
-      ]
-    },
-    {
-      "host": "172.19.218.179",
-      "username": "ec2-user",
-      "args": [],
-      "projects": [
-        {
-          "paths": ["/home/ec2-user"]
-        }
-      ]
-    }
   ],
   "tabs": {
     "file_icons": true,
