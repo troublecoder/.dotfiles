@@ -334,6 +334,11 @@ assert_lacks "$darwin" "AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3
 assert_has "$linux" ".zshrc"
 assert_has "$linux" ".config/ghostty/config.ghostty"
 assert_lacks "$linux" "AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
+for list in "$darwin" "$linux"; do
+  if printf '%s\n' "$list" | grep -E '^AppData(/|$)' >/dev/null; then
+    fail "비 Windows 플랫폼에서 AppData 디렉터리를 관리하면 안 됩니다."
+  fi
+done
 
 for target in darwin:arm64 linux:amd64; do
   os=${target%:*}
