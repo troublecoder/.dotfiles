@@ -14,8 +14,8 @@ effects out of `.zprofile` and into one idempotent chezmoi bootstrap script.
 
 The managed configuration is:
 
-- Shared personal instructions for Claude Code, Codex, and other agents on all
-  platforms.
+- Shared personal instructions for Claude Code and Codex on all platforms.
+- Shared agent skills under `~/.agents/skills/` on all platforms.
 - Zed settings and keymap on Windows, macOS, and Linux.
 - Zsh, Spaceship, Oh My Tmux, and LazyVim setup on macOS and Linux.
 - Ghostty configuration and theme on macOS and Linux.
@@ -42,7 +42,9 @@ home/
   dot_zshrc.tmpl
   dot_tmux.conf.local
   symlink_dot_tmux.conf
-  dot_agents/AGENTS.md.tmpl
+  dot_agents/
+    skills/
+      find-skills/SKILL.md
   dot_claude/CLAUDE.md.tmpl
   dot_codex/AGENTS.md.tmpl
   dot_config/
@@ -66,7 +68,7 @@ Unrelated user changes are not reverted or reformatted.
 
 | Target | Windows | macOS | Linux |
 | --- | --- | --- | --- |
-| `~/.agents/AGENTS.md` | yes | yes | yes |
+| `~/.agents/skills/` | yes | yes | yes |
 | `~/.claude/CLAUDE.md` | yes | yes | yes |
 | `~/.codex/AGENTS.md` | yes | yes | yes |
 | `~/.config/zed/settings.json` | yes | yes | yes |
@@ -90,12 +92,15 @@ Windows Terminal target on macOS and Linux.
 ## Templates
 
 The repository-root `CLAUDE.md` is the single source for personal agent
-instructions. `dot_agents/AGENTS.md.tmpl`, `dot_claude/CLAUDE.md.tmpl`, and
-`dot_codex/AGENTS.md.tmpl` include that file through `.chezmoi.workingTree`.
-Chezmoi therefore writes identical regular files to `~/.agents/AGENTS.md`,
-`~/.claude/CLAUDE.md`, and `~/.codex/AGENTS.md` without requiring symlink
-support on Windows. Existing entries under `~/.agents`, including `skills/`
-and `.skill-lock.json`, remain unmanaged and untouched.
+instructions. `dot_claude/CLAUDE.md.tmpl` and `dot_codex/AGENTS.md.tmpl`
+include that file through `.chezmoi.workingTree`. Chezmoi therefore writes
+identical regular files to `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md`
+without requiring symlink support on Windows.
+
+The current `~/.agents/skills/find-skills/SKILL.md` is managed as a regular
+cross-platform file. The `~/.agents/skills/` directory is not exact, so skills
+installed by another tool are not removed. `~/.agents/.skill-lock.json` remains
+unmanaged.
 
 `dot_zshrc.tmpl` preserves the current shell configuration. Its local Neovim
 `PATH` entry is emitted only on Linux and uses the archive directory selected
@@ -166,8 +171,10 @@ directory.
 The checks verify:
 
 - Each platform manages exactly the intended target paths.
-- All three rendered agent instruction files are byte-for-byte identical to
-  the repository-root `CLAUDE.md`.
+- Rendered Claude Code and Codex instruction files are byte-for-byte identical
+  to the repository-root `CLAUDE.md`.
+- The managed agent skill is present on every platform, while
+  `~/.agents/AGENTS.md` and `.skill-lock.json` remain unmanaged.
 - Windows Terminal is named `settings.json` at the Stable MSIX path.
 - Unix shell, tmux, and Ghostty files are absent from the Windows target state.
 - The bootstrap renders empty on Windows, excludes Neovim on macOS, and includes
