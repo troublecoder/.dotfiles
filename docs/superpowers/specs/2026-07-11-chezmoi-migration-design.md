@@ -16,6 +16,8 @@ The managed configuration is:
 
 - Shared personal instructions for Claude Code and Codex on all platforms.
 - Shared agent skills under `~/.agents/skills/` on all platforms.
+- CC Switch device settings on all platforms, excluding its database and
+  authentication state.
 - Zed settings and keymap on Windows, macOS, and Linux.
 - Zsh, Spaceship, Oh My Tmux, and LazyVim setup on macOS and Linux.
 - Ghostty configuration and theme on macOS and Linux.
@@ -45,6 +47,7 @@ home/
   dot_agents/
     skills/
       find-skills/SKILL.md
+  dot_cc-switch/private_settings.json
   dot_claude/CLAUDE.md.tmpl
   dot_codex/AGENTS.md.tmpl
   dot_config/
@@ -69,6 +72,7 @@ Unrelated user changes are not reverted or reformatted.
 | Target | Windows | macOS | Linux |
 | --- | --- | --- | --- |
 | `~/.agents/skills/` | yes | yes | yes |
+| `~/.cc-switch/settings.json` | yes | yes | yes |
 | `~/.claude/CLAUDE.md` | yes | yes | yes |
 | `~/.codex/AGENTS.md` | yes | yes | yes |
 | `~/.config/zed/settings.json` | yes | yes | yes |
@@ -101,6 +105,12 @@ The current `~/.agents/skills/find-skills/SKILL.md` is managed as a regular
 cross-platform file. The `~/.agents/skills/` directory is not exact, so skills
 installed by another tool are not removed. `~/.agents/.skill-lock.json` remains
 unmanaged.
+
+The current `~/.cc-switch/settings.json` is preserved as a regular JSON file
+without filtering its device-level values. The `private_` source attribute
+keeps mode `0600` on Unix-like systems. Chezmoi manages no other entry under
+`~/.cc-switch`; in particular, `cc-switch.db`, `codex_oauth_auth.json`, logs,
+backups, and skills remain local and unmanaged.
 
 `dot_zshrc.tmpl` preserves the current shell configuration. Its local Neovim
 `PATH` entry is emitted only on Linux and uses the archive directory selected
@@ -175,6 +185,8 @@ The checks verify:
   to the repository-root `CLAUDE.md`.
 - The managed agent skill is present on every platform, while
   `~/.agents/AGENTS.md` and `.skill-lock.json` remain unmanaged.
+- CC Switch settings remain valid JSON and are the only managed entry under
+  `~/.cc-switch`.
 - Windows Terminal is named `settings.json` at the Stable MSIX path.
 - Unix shell, tmux, and Ghostty files are absent from the Windows target state.
 - The bootstrap renders empty on Windows, excludes Neovim on macOS, and includes
@@ -197,3 +209,4 @@ migration changes.
 - <https://zed.dev/faq>
 - <https://code.claude.com/docs/en/memory>
 - <https://openai.com/index/unrolling-the-codex-agent-loop/>
+- <https://ccswitch.co/docs/faq-config-files.html>
