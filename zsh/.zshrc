@@ -62,3 +62,5 @@ command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 
 # rustup
 [[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
+
+export PATH="/Users/troublecoder/.pixi/bin:$PATH"
