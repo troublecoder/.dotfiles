@@ -1,19 +1,63 @@
 # 가이드라인
 
-## 공통
+LLM 코딩 실수를 줄이기 위한 행동 가이드다. 프로젝트별 지침과 충돌하면 프로젝트 지침이 우선한다. 사소한 작업에는 판단에 맡긴다.
 
-- "request_user_input이 default_mode에서도 실행되게 개조해줘 그리고 클로드의 AskUserQuestion의 탁월한 interview UX처럼 기능하게 소스코드를 조사한다음 최적화해줘"
+## 작업 원칙
+
+### 코딩 전에 생각한다
+
+- 가정은 명시적으로 밝힌다. 확실하지 않으면 묻는다.
+- 여러 해석이 가능하면 제시하고 임의로 하나만 고르지 않는다.
+- 더 단순한 방법이 있으면 알린다. 필요하면 반론한다.
+- 모호하면 멈추고 무엇이 헷갈리는지 명시한 뒤 묻는다.
+
+### 단순성 우선
+
+- 요청된 것 이상의 기능을 만들지 않는다.
+- 한 번만 쓰는 코드에 추상화를 도입하지 않는다.
+- 요청되지 않은 "유연성"이나 "설정 가능성"을 추가하지 않는다.
+- 불가능한 시나리오에 대한 에러 처리를 만들지 않는다.
+- 200줄이 50줄로 줄어든다면 다시 쓴다.
+- "시니어 엔지니어가 이걸 과하게 복잡하다고 할까?"라고 자문한다. 그렇다면 단순화한다.
+
+### 외과적 변경
+
+코드를 수정할 때:
+
+- 인접한 코드, 주석, 포맷팅을 "개선"하지 않는다.
+- 망가지지 않은 것을 리팩터링하지 않는다.
+- 본인 스타일과 달라도 기존 스타일을 따른다.
+- 기존 데드 코드는 사용자가 요청하지 않는 한 제거하지 않는다.
+- 단, 변경으로 사용되지 않게 된 임포트/변수/함수는 정리한다.
+- 모든 변경 라인은 사용자의 요청에 직접적으로 추적될 수 있어야 한다.
+
+### 목표 기반 실행
+
+- 작업을 검증 가능한 목표로 변환한다.
+  - "검증 추가" -> "잘못된 입력에 대한 테스트 작성 후 통과시키기"
+  - "버그 수정" -> "재현 테스트 작성 후 통과시키기"
+  - "리팩터링" -> "변경 전후로 테스트가 통과하는지 확인"
+- 다단계 작업은 간단한 계획을 세운다.
+
+## 환경 및 도구
+
+### 공통
+
 - 워크스페이스의 .worktree를 워크트리 베이스 디렉토리로 사용하고 병렬 서브 에이전트 사용을 권장한다.
 
-## 파이썬
+### MCP
 
-- 가능하다면 code-index를 사용한다.
-- 가능하다면 debugmcp를 사용한다.
-- 파이썬은 uv 환경을 사용하기 때문에 실행이나 패키지 설치시 주의가 필요하다.
+- 코드 검색에는 가능하다면 code-index를 사용한다.
+- 웹 프론트엔드의 경우에는 Chrome DevTools MCP를 사용한다.
 
-## 커밋
+### 파이썬
+
+- 파이썬은 uv 환경을 사용하므로 실행이나 패키지 설치 시 주의가 필요하다.
+
+## 커밋 규칙
 
 - 커밋 메시지는 반드시 `prefix: 내용` 형식으로 작성한다.
+- prefix를 제외한 나머지 커밋 메시지는 한글로 작성한다.
 - prefix는 아래 중 하나를 사용한다.
   - `init`: 프로젝트 초기 구성, 시작점 생성, 기본 설정
   - `feat`: 새로운 기능 추가
@@ -26,74 +70,4 @@
   - `perf`: 성능 개선
   - `build`: 빌드, 패키징, 배포 설정 변경
   - `ci`: CI/CD 설정 변경
-- prefix를 제외한 나머지 커밋 메시지는 한글로 작성한다.
-- main에 반영할때는 머지보다는 스쿼시로 적용을 권장한다.
-
-Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
-
-**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
-
-## 1. Think Before Coding
-
-**Don't assume. Don't hide confusion. Surface tradeoffs.**
-
-Before implementing:
-
-- State your assumptions explicitly. If uncertain, ask.
-- If multiple interpretations exist, present them - don't pick silently.
-- If a simpler approach exists, say so. Push back when warranted.
-- If something is unclear, stop. Name what's confusing. Ask.
-
-## 2. Simplicity First
-
-**Minimum code that solves the problem. Nothing speculative.**
-
-- No features beyond what was asked.
-- No abstractions for single-use code.
-- No "flexibility" or "configurability" that wasn't requested.
-- No error handling for impossible scenarios.
-- If you write 200 lines and it could be 50, rewrite it.
-
-Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
-
-## 3. Surgical Changes
-
-**Touch only what you must. Clean up only your own mess.**
-
-When editing existing code:
-
-- Don't "improve" adjacent code, comments, or formatting.
-- Don't refactor things that aren't broken.
-- Match existing style, even if you'd do it differently.
-- If you notice unrelated dead code, mention it - don't delete it.
-
-When your changes create orphans:
-
-- Remove imports/variables/functions that YOUR changes made unused.
-- Don't remove pre-existing dead code unless asked.
-
-The test: Every changed line should trace directly to the user's request.
-
-## 4. Goal-Driven Execution
-
-**Define success criteria. Loop until verified.**
-
-Transform tasks into verifiable goals:
-
-- "Add validation" → "Write tests for invalid inputs, then make them pass"
-- "Fix the bug" → "Write a test that reproduces it, then make it pass"
-- "Refactor X" → "Ensure tests pass before and after"
-
-For multi-step tasks, state a brief plan:
-
-```
-1. [Step] → verify: [check]
-2. [Step] → verify: [check]
-3. [Step] → verify: [check]
-```
-
-Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
-
----
-
-**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+- main에 반영할 때는 머지보다 스쿼시를 권장한다.
