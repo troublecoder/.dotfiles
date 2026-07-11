@@ -71,7 +71,6 @@
   "autosave": "on_focus_change",
   "auto_install_extensions": {
     "asciidoc": true,
-    "biome": true,
     "caddyfile": true,
     "cargo-appraiser": true,
     "cargo-tom": true,

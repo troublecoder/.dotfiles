@@ -7,6 +7,7 @@ theme = catppuccin-mocha.conf
 
 # --- Font ---
 font-family = CaskaydiaCove Nerd Font
+font-family = D2CodingLigature Nerd Font
 font-size = 14
 font-feature = calt
 font-feature = liga
