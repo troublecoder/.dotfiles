@@ -14,7 +14,8 @@ effects out of `.zprofile` and into one idempotent chezmoi bootstrap script.
 
 The managed configuration is:
 
-- Shared personal instructions for Claude Code and Codex on all platforms.
+- Shared personal instructions for Claude Code, Codex, and other agents on all
+  platforms.
 - Zed settings and keymap on Windows, macOS, and Linux.
 - Zsh, Spaceship, Oh My Tmux, and LazyVim setup on macOS and Linux.
 - Ghostty configuration and theme on macOS and Linux.
@@ -41,6 +42,7 @@ home/
   dot_zshrc.tmpl
   dot_tmux.conf.local
   symlink_dot_tmux.conf
+  dot_agents/AGENTS.md.tmpl
   dot_claude/CLAUDE.md.tmpl
   dot_codex/AGENTS.md.tmpl
   dot_config/
@@ -64,6 +66,7 @@ Unrelated user changes are not reverted or reformatted.
 
 | Target | Windows | macOS | Linux |
 | --- | --- | --- | --- |
+| `~/.agents/AGENTS.md` | yes | yes | yes |
 | `~/.claude/CLAUDE.md` | yes | yes | yes |
 | `~/.codex/AGENTS.md` | yes | yes | yes |
 | `~/.config/zed/settings.json` | yes | yes | yes |
@@ -87,11 +90,12 @@ Windows Terminal target on macOS and Linux.
 ## Templates
 
 The repository-root `CLAUDE.md` is the single source for personal agent
-instructions. Both `dot_claude/CLAUDE.md.tmpl` and
-`dot_codex/AGENTS.md.tmpl` include that file through
-`.chezmoi.workingTree`. Chezmoi therefore writes identical regular files to
-`~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` without requiring symlink
-support on Windows.
+instructions. `dot_agents/AGENTS.md.tmpl`, `dot_claude/CLAUDE.md.tmpl`, and
+`dot_codex/AGENTS.md.tmpl` include that file through `.chezmoi.workingTree`.
+Chezmoi therefore writes identical regular files to `~/.agents/AGENTS.md`,
+`~/.claude/CLAUDE.md`, and `~/.codex/AGENTS.md` without requiring symlink
+support on Windows. Existing entries under `~/.agents`, including `skills/`
+and `.skill-lock.json`, remain unmanaged and untouched.
 
 `dot_zshrc.tmpl` preserves the current shell configuration. Its local Neovim
 `PATH` entry is emitted only on Linux and uses the archive directory selected
@@ -162,8 +166,8 @@ directory.
 The checks verify:
 
 - Each platform manages exactly the intended target paths.
-- Rendered Claude Code and Codex instruction files are byte-for-byte identical
-  to the repository-root `CLAUDE.md`.
+- All three rendered agent instruction files are byte-for-byte identical to
+  the repository-root `CLAUDE.md`.
 - Windows Terminal is named `settings.json` at the Stable MSIX path.
 - Unix shell, tmux, and Ghostty files are absent from the Windows target state.
 - The bootstrap renders empty on Windows, excludes Neovim on macOS, and includes
