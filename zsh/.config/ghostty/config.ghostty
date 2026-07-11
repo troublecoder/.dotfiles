@@ -35,6 +35,8 @@ cursor-style-blink = true
 cursor-color = #cba6f7
 
 # --- Mouse & Selection ---
+selection-background = #cba6f7
+selection-foreground = #1e1e2e
 copy-on-select = clipboard
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 3
