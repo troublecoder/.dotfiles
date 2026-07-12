@@ -69,3 +69,6 @@ command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 
 # rustup
 [[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
+
+# pixi
+command -v pixi >/dev/null 2>&1 && eval "$(pixi shell-hook)"
