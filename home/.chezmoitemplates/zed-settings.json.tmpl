@@ -1,0 +1,476 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "format_on_save": "on",
+  "default_open_behavior": "new_window",
+  "ui_font_family": ".ZedSans",
+  "proxy": "",
+  "project_panel": {
+    "bold_folder_labels": true
+  },
+  "status_bar": {
+    "show_active_file": true
+  },
+  "code_lens": "on",
+  "show_signature_help_after_edits": true,
+  "auto_signature_help": true,
+  "mouse_wheel_zoom": true,
+  "diff_view_style": "split",
+  "cli_default_open_behavior": "new_window",
+  "agent": {
+    "dock": "left",
+    "expand_edit_card": false,
+    "expand_terminal_card": false,
+    "tool_permissions": {
+      "default": "allow",
+      "tools": {
+        "restore_file_from_disk": {
+          "default": "confirm"
+        },
+        "delete_path": {
+          "default": "confirm"
+        },
+        "terminal": {
+          "default": "allow"
+        }
+      }
+    },
+    "default_model": {
+      "provider": "Z.ai",
+      "model": "glm-5.1"
+    },
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "agent_buffer_font_size": 14.0,
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry",
+      "default_mode": "bypassPermissions"
+    },
+    "claude-acp": {
+      "default_config_options": {
+        "mode": "bypassPermissions",
+        "effort": "max",
+        "model": "opus"
+      },
+      "favorite_config_option_values": {
+        "mode": ["bypassPermissions"]
+      },
+      "type": "registry",
+      "default_mode": "bypassPermissions"
+    }
+  },
+  "agent_ui_font_size": 14.0,
+  "autosave": "on_focus_change",
+  "auto_install_extensions": {
+    "asciidoc": true,
+    "caddyfile": true,
+    "cargo-appraiser": true,
+    "cargo-tom": true,
+    "catppuccin": true,
+    "catppuccin-icons": true,
+    "chrome-devtools-mcp": true,
+    "color-highlight": true,
+    "csharp": true,
+    "dependi": true,
+    "docker-compose": true,
+    "dockerfile": true,
+    "env": true,
+    "fish": true,
+    "ghostty": true,
+    "git-firefly": true,
+    "html": true,
+    "ini": true,
+    "java": true,
+    "java-eclipse-jdtls": true,
+    "jinja2": true,
+    "kotlin": true,
+    "live-server": true,
+    "log": true,
+    "markdown-oxide": true,
+    "marksman": true,
+    "mcp-server-context7": true,
+    "mcp-server-sequential-thinking": true,
+    "mermaid": true,
+    "npm-package-json-checker": true,
+    "org": true,
+    "proto": true,
+    "python-requirements": true,
+    "python-snippets": true,
+    "rainbow-csv": true,
+    "scss": true,
+    "sql": true,
+    "ssh-config": true,
+    "tombi": true,
+    "toml": true,
+    "typst": true,
+    "vue": true,
+    "vue-snippets": true,
+    "xml": true
+  },
+  "base_keymap": "VSCode",
+  "buffer_font_family": "CaskaydiaCove Nerd Font",
+  "buffer_font_size": 14.0,
+  "buffer_font_fallbacks": ["D2CodingLigature Nerd Font"],
+  "colorize_brackets": true,
+  "context_servers": {
+    "serena": {
+      "enabled": true,
+      "remote": false,
+      "command": "serena",
+      "args": ["start-mcp-server", "--project-from-cwd", "--context=codex"],
+      "env": {}
+    },
+    "code-index": {
+      "enabled": true,
+      "remote": false,
+      "command": "uvx",
+      "args": ["code-index-mcp"],
+      "env": {}
+    },
+    "chrome-devtools": {
+      "enabled": false,
+      "remote": false,
+      "settings": {}
+    }
+  },
+  "current_line_highlight": "all",
+  "cursor_blink": true,
+  "diagnostics": {
+    "inline": {
+      "enabled": true
+    }
+  },
+  "edit_predictions": {
+    "allow_data_collection": "no",
+    "provider": "zed",
+    "copilot": {
+      "enable_next_edit_suggestions": true
+    }
+  },
+  "git": {
+    "inline_blame": {
+      "show_commit_summary": true
+    }
+  },
+  "git_panel": {
+    "dock": "right",
+    "file_icons": true,
+    "show_count_badge": true,
+    "sort_by_path": true,
+    "tree_view": true
+  },
+  "icon_theme": "Catppuccin Mocha",
+  "indent_guides": {
+    "enabled": true,
+    "line_width": 1,
+    "active_line_width": 1,
+    "coloring": "indent_aware",
+    "background_coloring": "indent_aware"
+  },
+  "inlay_hints": {
+    "enabled": true
+  },
+  "languages": {
+    "JavaScript": {
+      "language_servers": ["vtsls", "..."]
+    },
+    "Kotlin": {
+      "language_servers": ["kotlin-lsp"]
+    },
+    "Markdown": {
+      "show_edit_predictions": false
+    },
+    "Python": {
+      "formatter": [
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        },
+        { "code_action": "source.organizeImports.ruff" }
+      ],
+      "language_servers": [
+        "ty",
+        "ruff",
+        "!basedpyright",
+        "!pyrefly",
+        "!pyright",
+        "!pylsp"
+      ]
+    },
+    "Vue.js": {
+      "language_servers": ["vue-language-server", "vtsls", "..."]
+    },
+    "TSX": {
+      "language_servers": ["vtsls", "..."]
+    },
+    "TypeScript": {
+      "language_servers": ["vtsls", "..."]
+    },
+    "YAML": {
+      "tab_size": 2
+    }
+  },
+  "language_models": {
+    "openai_compatible": {
+      "Z.ai": {
+        "api_url": "https://api.z.ai/api/coding/paas/v4",
+        "available_models": [
+          {
+            "name": "glm-5.2",
+            "max_tokens": 1000000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+              "chat_completions": true
+            }
+          }
+        ]
+      }
+    }
+  },
+  "line_indicator_format": "long",
+  "lsp": {
+    "basedpyright": {
+      "settings": {
+        "python.analysis": {
+          "diagnosticMode": "workspace",
+          "diagnosticSeverityOverrides": {
+            "reportAny": "none",
+            "reportMissingParameterType": "none",
+            "reportMissingTypeArgument": "none",
+            "reportMissingTypeStubs": "none",
+            "reportUnknownArgumentType": "none",
+            "reportUnknownLambdaType": "none",
+            "reportUnknownMemberType": "none",
+            "reportUnknownParameterType": "none",
+            "reportUnknownVariableType": "none"
+          }
+        },
+        "python": {
+          "pythonPath": ".venv/bin/python"
+        }
+      }
+    },
+    "kotlin-language-server": {
+      "settings": {
+        "compiler": {
+          "jvm": {
+            "target": "25"
+          }
+        }
+      }
+    },
+{{ if eq .chezmoi.os "windows" }}
+    "kotlin-lsp": {
+      "binary": {
+        "path": "{{ joinPath .chezmoi.homeDir "AppData" "Local" "Zed" "extensions" "work" "kotlin" "kotlin-lsp-262.4739.0" "bin" "intellij-server.exe" | replace "\\" "/" }}",
+        "arguments": ["--stdio"]
+      }
+    },
+{{ end }}
+    "ruff": {
+      "initialization_options": {
+        "settings": {
+          "lint": {
+            "enable": true
+          },
+          "lineLength": 120
+        }
+      }
+    },
+    "rust-analyzer": {
+      "initialization_options": {
+        "check": {
+          "command": "clippy"
+        },
+        "cargo": {
+          "allFeatures": true,
+          "loadOutDirsFromCheck": true,
+          "buildScripts": {
+            "enable": true
+          }
+        },
+        "procMacro": {
+          "enable": true,
+          "ignored": {
+            "async-trait": ["async_trait"],
+            "napi-derive": ["napi"],
+            "async-recursion": ["async_recursion"]
+          }
+        },
+        "rust": {
+          "analyzerTargetDir": true
+        },
+        "inlayHints": {
+          "maxLength": null,
+          "lifetimeElisionHints": {
+            "enable": "skip_trivial",
+            "useParameterNames": true
+          },
+          "closureReturnTypeHints": {
+            "enable": "always"
+          }
+        }
+      }
+    },
+    "vue-language-server": {
+      "initialization_options": {
+        "typescript": {
+          "tsdk": "node_modules/typescript/lib"
+        }
+      },
+      "settings": {
+        // Display inlay hints for the `$event` parameter in inline event handlers.
+        "vue.inlayHints.inlineHandlerLeading": true,
+        // Display hints when required component props are missing in templates.
+        "vue.inlayHints.missingProps": true,
+        // Display inlay hints for patterns that wrap component options.
+        "vue.inlayHints.optionsWrapper": true,
+        // Display inlay hints related to `v-bind` shorthand (`:`).
+        "vue.inlayHints.vBindShorthand": true
+      }
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "tailwindCSS": {
+          "emmetCompletions": true
+        },
+        "includeLanguages": {
+          "vue": "html"
+        },
+        "experimental": {
+          "classRegex": [
+            "\\.className\\s*[+]?=\\s*['\"]([^'\"]*)['\"]",
+            "\\.setAttributeNS\\(.*,\\s*['\"]class['\"],\\s*['\"]([^'\"]*)['\"]",
+            "\\.setAttribute\\(['\"]class['\"],\\s*['\"]([^'\"]*)['\"]",
+            "\\.classList\\.add\\(['\"]([^'\"]*)['\"]",
+            "\\.classList\\.remove\\(['\"]([^'\"]*)['\"]",
+            "\\.classList\\.toggle\\(['\"]([^'\"]*)['\"]",
+            "\\.classList\\.contains\\(['\"]([^'\"]*)['\"]",
+            "\\.classList\\.replace\\(\\s*['\"]([^'\"]*)['\"]",
+            "\\.classList\\.replace\\([^,)]+,\\s*['\"]([^'\"]*)['\"]"
+          ]
+        }
+      }
+    },
+    "vtsls": {
+      "settings": {
+        // For JavaScript:
+        "javascript": {
+          "inlayHints": {
+            "parameterNames": {
+              "enabled": "all",
+              "suppressWhenArgumentMatchesName": false
+            },
+            "parameterTypes": {
+              "enabled": true
+            },
+            "variableTypes": {
+              "enabled": true,
+              "suppressWhenTypeMatchesName": true
+            },
+            "propertyDeclarationTypes": {
+              "enabled": true
+            },
+            "functionLikeReturnTypes": {
+              "enabled": true
+            },
+            "enumMemberValues": {
+              "enabled": true
+            }
+          }
+        },
+        // For TypeScript:
+        "typescript": {
+          "inlayHints": {
+            "parameterNames": {
+              "enabled": "all",
+              "suppressWhenArgumentMatchesName": false
+            },
+            "parameterTypes": {
+              "enabled": true
+            },
+            "variableTypes": {
+              "enabled": true,
+              "suppressWhenTypeMatchesName": true
+            },
+            "propertyDeclarationTypes": {
+              "enabled": true
+            },
+            "functionLikeReturnTypes": {
+              "enabled": true
+            },
+            "enumMemberValues": {
+              "enabled": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "minimap": {
+    "max_width_columns": 64,
+    "show": "always"
+  },
+  "relative_line_numbers": "enabled",
+  "resize_all_panels_in_dock": ["right"],
+  "restore_on_startup": "launchpad",
+  "semantic_tokens": "combined",
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "show_whitespaces": "all",
+  "show_wrap_guides": true,
+  "ssh_connections": [
+  ],
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "terminal": {
+    "toolbar": {
+      "breadcrumbs": true
+    },
+    "show_count_badge": true,
+    "font_size": 13.0,
+    "copy_on_select": true,
+    "keep_selection_on_copy": true
+  },
+  "theme": "Catppuccin Mocha",
+  "title_bar": {
+    "show_menus": true,
+    "show_branch_status_icon": true
+  },
+  "toolbar": {
+    "code_actions": true
+  },
+  "ui_font_size": 15.0,
+  "vim": {
+    "use_smartcase_find": true,
+    "toggle_relative_line_numbers": true,
+    "use_system_clipboard": "always"
+  },
+  "vim_mode": true,
+  "which_key": {
+    "enabled": true,
+    "delay_ms": 0
+  },
+  "wrap_guides": [80, 120]
+}

@@ -1,0 +1,45 @@
+{{- if eq .chezmoi.os "darwin" -}}
+[
+  {
+    "bindings": {
+      "alt-p": "text_finder::Toggle"
+    }
+  }
+]
+{{- else -}}
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Editor && !menu",
+    "bindings": {
+      "ctrl-a": "editor::SelectAll",
+      "ctrl-x": "editor::Cut",
+      "ctrl-c": "editor::Copy",
+      "ctrl-v": "editor::Paste",
+      "ctrl-s": "workspace::Save",
+    },
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "ctrl-w": [
+        "pane::CloseActiveItem",
+        {
+          "close_pinned": false
+        }
+      ]
+    }
+  },
+  {
+    "bindings": {
+      "alt-p": "text_finder::Toggle"
+    }
+  }
+]
+{{- end }}

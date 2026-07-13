@@ -6,6 +6,7 @@
 .oh-my-zsh
 .config/spaceship.zsh
 .config/ghostty
+.config/zed
 {{ else }}
 AppData/
 {{ end }}
