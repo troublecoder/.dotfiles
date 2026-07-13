@@ -341,6 +341,12 @@ for list in "$darwin" "$linux"; do
   fi
 done
 
+linux_zshrc=$(render_template linux amd64 dot_zshrc.tmpl)
+assert_contains "$linux_zshrc" 'export PATH="$HOME/.pixi/bin:$PATH"' \
+  "Linux zshrc에 Pixi 실행 파일 PATH가 없습니다."
+assert_not_contains "$linux_zshrc" 'pixi shell-hook' \
+  "Linux zshrc가 Pixi 프로젝트 밖에서 환경 활성화를 시도합니다."
+
 for target in darwin:arm64 linux:amd64; do
   os=${target%:*}
   arch=${target#*:}
